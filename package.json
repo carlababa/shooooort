@@ -6,6 +6,7 @@
   "scripts": {
     "watch": "webpack -d --watch",
     "build": "webpack",
+    "start": "node index.js",
     "lint": "eslint src; exit 0",
     "lint:fix": "eslint src --fix; exit 0"
   },
@@ -34,6 +35,8 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "express": "^4.14.0",
+    "http-proxy": "^1.16.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }
