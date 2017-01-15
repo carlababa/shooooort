@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Url from './Url';
 
+require('./App.css');
+require('./Grid.css');
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -46,17 +49,32 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.shortenUrl}>
-          <input
-            type="text"
-            placeholder="Paste the link you want to shorten here"
-            value={this.state.url} onChange={this.handleChange}
-          />
-          <button type="submit">
-            Shorten this link
-          </button>
-        </form>
+      <div className="container">
+        <div className="grid">
+          <div className="title col-4-8">Shooooort</div>
+          <div className="subTitle col-4-8">The link shortener with a long name</div>
+        </div>
+        <div className="grid">
+          <form className="formContainer" onSubmit={this.shortenUrl}>
+            <input
+              className="col-6-8"
+              type="text"
+              placeholder="Paste the link you want to shorten here"
+              value={this.state.url} onChange={this.handleChange}
+            />
+            <button className="col-2-8" type="submit">
+              Shorten this link
+            </button>
+          </form>
+        </div>
+        <div className="previous">Previously shortened by you</div>
+        <div className="grid header">
+          <div className="link col-6-8">LINK</div>
+          <div className="col-2-8 center">
+            <div className="col-3-8">VISITS</div>
+            <div className="col-5-8">LAST VISITED</div>
+          </div>
+        </div>
         {this.state.shortenedLinks.map(item => (
           <Url key={item.shortcode} link={item} />
         ))}

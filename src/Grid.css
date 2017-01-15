@@ -1,0 +1,180 @@
+/*
+  8 columns version adapted from:
+  Simple Grid
+  Project Page - http://thisisdallas.github.com/Simple-Grid/
+  Author - Dallas Bass
+  Site - http://dallasbass.com
+*/
+
+[class*='grid'],
+[class*='col-'],
+[class*='mobile-'],
+.grid:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+[class*='col-'] {
+	float: left;
+  min-height: 1px;
+}
+
+.grid {
+	width: 100%;
+	max-width: 1140px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.grid:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.grid-pad {
+	padding-top: 20px;
+	padding-left: 20px; /* grid-space to left */
+	padding-right: 0; /* grid-space to right: (grid-space-left - column-space) e.g. 20px-20px=0 */
+}
+
+.push-right {
+	float: right;
+}
+
+/* Layout Columns */
+
+.col-1-8 {
+	width: 12.5%;
+}
+
+.col-2-8 {
+	width: 25%;
+}
+
+.col-3-8 {
+	width: 37.5%;
+}
+
+.col-4-8 {
+	width: 50%;
+}
+
+.col-5-8 {
+	width: 62.5%;
+}
+
+.col-6-8 {
+	width: 75%;
+}
+
+.col-7-8 {
+	width: 87.5%;
+}
+
+.col-8-8 {
+	width: 100%;
+}
+
+/* Pushing blocks */
+
+.push-1-8 {
+	margin-left: 12.5%;
+}
+
+.push-2-8 {
+	margin-left: 25%;
+}
+
+.push-3-8 {
+	margin-left: 37.5%;
+}
+
+.push-4-8 {
+	margin-left: 50%;
+}
+
+.push-5-8 {
+	margin-left: 62.5%;
+}
+
+.push-6-8 {
+	margin-left: 75%;
+}
+
+.push-7-8 {
+	margin-left: 87.5%;
+}
+
+
+@media handheld, only screen and (max-width: 767px) {
+	.grid {
+		width: 100%;
+		min-width: 0;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 20px; /* grid-space to left */
+		padding-right: 10px; /* grid-space to right: (grid-space-left - column-space) e.g. 20px-10px=10px */
+	}
+
+	[class*='col-'] {
+		width: auto;
+		float: none;
+		margin: 10px 0;
+		padding-left: 0;
+		padding-right: 10px; /* column-space */
+	}
+
+	[class*='col-'] [class*='col-'] {
+		padding-right: 0;
+	}
+
+	/* Mobile Layout */
+
+	[class*='mobile-col-'] {
+		float: left;
+		margin: 0 0 10px;
+		padding-left: 0;
+		padding-right: 10px; /* column-space */
+		padding-bottom: 0;
+	}
+
+  .mobile-1-8 {
+  	width: 12.5%;
+  }
+
+  .mobile-2-8 {
+  	width: 25%;
+  }
+
+  .mobile-3-8 {
+  	width: 37.5%;
+  }
+
+  .mobile-4-8 {
+  	width: 50%;
+  }
+
+  .mobile-5-8 {
+  	width: 62.5%;
+  }
+
+  .mobile-6-8 {
+  	width: 75%;
+  }
+
+  .mobile-7-8 {
+  	width: 87.5%;
+  }
+
+  .mobile-8-8 {
+  	width: 100%;
+  }
+
+	.hide-on-mobile {
+		display: none !important;
+		width: 0;
+		height: 0;
+	}
+}

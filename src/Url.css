@@ -1,0 +1,23 @@
+.shortcode {
+  color: #EB4A42;
+}
+
+.longUrl {
+  padding-top: 15px;
+  color: #CCC;
+  font-weight: 300;
+}
+
+.visits {
+  line-height: 53px;
+}
+
+.link {
+  width: 380px;
+}
+
+.link .copyLink {
+  color: #EB4A42;
+  float: right;
+  font-weight: 300;
+}

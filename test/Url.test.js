@@ -31,9 +31,7 @@ describe('Url', () => {
 
   describe('when starting component', () => {
     it('renders the state', () => {
-      const shortCodeLink = `shooooort.com/${link.shortcode}`;
-      expect(component.find('div.link span')).to.have.text(shortCodeLink);
-      expect(component.find('span.longUrl')).to.have.text(link.longUrl);
+      expect(component.find('div.link')).to.have.text('shooooort.com/a716Click to copy this link');
     });
 
     it('GET stats from server and fill state', (done) => {

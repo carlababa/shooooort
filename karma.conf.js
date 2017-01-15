@@ -21,6 +21,13 @@ module.exports = function karmaConfig(config) {
       module: {
         loaders: [
           {
+            test: /\.css$/,
+            loaders: [
+              'style',
+              'css-loader',
+            ],
+          },
+          {
             test: /\.(js|jsx)$/,
             loader: 'babel',
             exclude: path.resolve(__dirname, 'node_modules'),

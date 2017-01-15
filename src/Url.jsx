@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+require('./Url.css');
+require('./Grid.css');
+
 class Url extends Component {
   constructor(props) {
     super(props);
@@ -22,15 +25,18 @@ class Url extends Component {
 
   render() {
     return (
-      <div>
-        <div className="link">
-          <span>shooooort.com/{this.state.link.shortcode}</span>
-          <br />
+      <div className="grid">
+        <div className="col-6-8">
+          <div className="link">
+            <span>shooooort.com/</span>
+            <span className="shortcode">{this.state.link.shortcode}</span>
+            <span className="copyLink">Click to copy this link</span>
+          </div>
+          <div className="longUrl">{this.state.link.longUrl}</div>
         </div>
-        <span className="longUrl">{this.state.link.longUrl}</span>
-        <div>
-          <span>{this.state.link.redirectCount}</span>
-          <span>{this.state.link.lastSeenDate}</span>
+        <div className="visits col-2-8 center">
+          <div className="col-3-8">{this.state.link.redirectCount}</div>
+          <div className="col-5-8">{this.state.link.lastSeenDate}</div>
         </div>
       </div>
     );
