@@ -33,7 +33,7 @@ class App extends Component {
 
   shortenUrl(event) {
     event.preventDefault();
-    const urlApi = 'http://localhost:3000/proxy/shorten';
+    const urlApi = '/proxy/shorten';
     const url = this.state.url;
 
     axios.post(urlApi, { url })
