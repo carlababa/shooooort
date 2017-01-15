@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import cutText from './Helpers';
 
 require('./Url.css');
 require('./Grid.css');
@@ -24,6 +25,7 @@ class Url extends Component {
   }
 
   render() {
+    const longUrl = cutText(this.state.link.longUrl, 50);
     return (
       <div className="grid">
         <div className="col-6-8">
@@ -32,7 +34,7 @@ class Url extends Component {
             <span className="shortcode">{this.state.link.shortcode}</span>
             <span className="copyLink">Click to copy this link</span>
           </div>
-          <div className="longUrl">{this.state.link.longUrl}</div>
+          <div className="longUrl">{longUrl}</div>
         </div>
         <div className="visits col-2-8 center">
           <div className="col-3-8">{this.state.link.redirectCount}</div>

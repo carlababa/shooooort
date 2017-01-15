@@ -62,7 +62,7 @@ class App extends Component {
               placeholder="Paste the link you want to shorten here"
               value={this.state.url} onChange={this.handleChange}
             />
-            <button className="col-2-8" type="submit">
+            <button className="col-2-8" disabled={!this.state.url} type="submit">
               Shorten this link
             </button>
           </form>

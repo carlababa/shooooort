@@ -18,6 +18,11 @@
 
 .link .copyLink {
   color: #EB4A42;
-  float: right;
+  visibility: hidden;
+  padding-left: 25px;
   font-weight: 300;
+}
+
+.link:hover .copyLink {
+  visibility: visible;
 }

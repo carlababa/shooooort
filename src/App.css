@@ -67,6 +67,11 @@ body {
   outline: none;
 }
 
+.formContainer button:disabled {
+  background-color: #E0E0E0;
+  color: #BFBFBF;
+}
+
 .previous {
   margin-top: 76px;
   margin-bottom: 36px;
