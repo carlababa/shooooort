@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import cutText from './Helpers';
+import { cutText, copyToClipboard } from './Helpers';
 
 require('./Url.css');
 require('./Grid.css');
@@ -8,6 +8,7 @@ require('./Grid.css');
 class Url extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       link: this.props.link,
     };
@@ -26,14 +27,15 @@ class Url extends Component {
 
   render() {
     const longUrl = cutText(this.state.link.longUrl, 50);
+    const fullLink = `http://gymia-shorty.herokuapp.com/${this.state.link.shortcode}`;
     return (
       <div className="grid">
         <div className="col-6-8">
-          <div className="link">
+          <a className="link" onClick={() => copyToClipboard(fullLink)}>
             <span>shooooort.com/</span>
             <span className="shortcode">{this.state.link.shortcode}</span>
             <span className="copyLink">Click to copy this link</span>
-          </div>
+          </a>
           <div className="longUrl">{longUrl}</div>
         </div>
         <div className="visits col-2-8 center">
