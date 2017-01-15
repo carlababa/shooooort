@@ -8,9 +8,11 @@ require('./Grid.css');
 class App extends Component {
   constructor(props) {
     super(props);
+
+    const shortenedLinks = localStorage.getItem('shortenedLinks') || '[]';
     this.state = {
       url: '',
-      shortenedLinks: [],
+      shortenedLinks: JSON.parse(shortenedLinks),
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,14 +25,16 @@ class App extends Component {
   }
 
   addLink(response) {
+    const shortenedLinks = [
+      ...this.state.shortenedLinks,
+      {
+        longUrl: this.state.url,
+        shortcode: response.data.shortcode,
+      },
+    ];
+    localStorage.setItem('shortenedLinks', JSON.stringify(shortenedLinks));
     this.setState({
-      shortenedLinks: [
-        ...this.state.shortenedLinks,
-        {
-          longUrl: this.state.url,
-          shortcode: response.data.shortcode,
-        },
-      ],
+      shortenedLinks,
       url: '',
     });
   }

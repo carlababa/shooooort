@@ -31,7 +31,7 @@ describe('Url', () => {
 
   describe('when starting component', () => {
     it('renders the state', () => {
-      expect(component.find('div.link')).to.have.text('shooooort.com/a716Click to copy this link');
+      expect(component.find('a.link')).to.have.text('shooooort.com/a716Click to copy this link');
     });
 
     it('GET stats from server and fill state', (done) => {
