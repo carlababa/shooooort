@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import moxios from 'moxios';
 import App from '../src/App';
 
@@ -8,7 +8,7 @@ describe('App', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<App />);
+    component = mount(<App />);
   });
 
   describe('when typing in the input', () => {

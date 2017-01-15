@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Url from './Url';
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +57,9 @@ class App extends Component {
             Shorten this link
           </button>
         </form>
+        {this.state.shortenedLinks.map(item => (
+          <Url key={item.shortcode} link={item} />
+        ))}
       </div>
     );
   }
