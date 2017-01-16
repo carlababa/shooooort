@@ -30,7 +30,7 @@ npm start
 ```
 Access [localhost:3000](http://localhost:3000)
 
-### How to test
+## How to test
 
 ```
 npm test
