@@ -18,6 +18,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.shortenUrl = this.shortenUrl.bind(this);
     this.addLink = this.addLink.bind(this);
+    this.clearHistory = this.clearHistory.bind(this);
   }
 
   handleChange(event) {
@@ -51,6 +52,34 @@ class App extends Component {
       });
   }
 
+  clearHistory() {
+    localStorage.clear();
+    this.setState({
+      shortenedLinks: [],
+    });
+  }
+
+  renderList() {
+    return (
+      <div>
+        <div className="previous">
+          <span>Previously shortened by you</span>
+          <a onClick={this.clearHistory} className="clearHistory">Clear history</a>
+        </div>
+        <div className="grid header">
+          <div className="link col-5-8">LINK</div>
+          <div className="col-3-8 center">
+            <div className="col-3-8">VISITS</div>
+            <div className="col-5-8">LAST VISITED</div>
+          </div>
+        </div>
+        {this.state.shortenedLinks.map(item => (
+          <Url key={item.shortcode} link={item} />
+        ))}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="container">
@@ -71,17 +100,7 @@ class App extends Component {
             </button>
           </form>
         </div>
-        <div className="previous">Previously shortened by you</div>
-        <div className="grid header">
-          <div className="link col-5-8">LINK</div>
-          <div className="col-3-8 center">
-            <div className="col-3-8">VISITS</div>
-            <div className="col-5-8">LAST VISITED</div>
-          </div>
-        </div>
-        {this.state.shortenedLinks.map(item => (
-          <Url key={item.shortcode} link={item} />
-        ))}
+        {this.state.shortenedLinks.length ? this.renderList() : <div />}
       </div>
     );
   }
