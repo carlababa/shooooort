@@ -73,8 +73,8 @@ class App extends Component {
         </div>
         <div className="previous">Previously shortened by you</div>
         <div className="grid header">
-          <div className="link col-6-8">LINK</div>
-          <div className="col-2-8 center">
+          <div className="link col-5-8">LINK</div>
+          <div className="col-3-8 center">
             <div className="col-3-8">VISITS</div>
             <div className="col-5-8">LAST VISITED</div>
           </div>

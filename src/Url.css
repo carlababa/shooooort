@@ -27,3 +27,7 @@
 .link:hover .copyLink {
   visibility: visible;
 }
+
+.row {
+  padding-bottom: 40px;
+}
