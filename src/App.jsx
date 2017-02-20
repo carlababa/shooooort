@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import NProgress from 'nprogress';
 import Url from './Url';
 
+require('nprogress/nprogress.css');
 require('./App.css');
 require('./Grid.css');
 
@@ -13,6 +15,7 @@ class App extends Component {
     this.state = {
       url: '',
       shortenedLinks: JSON.parse(shortenedLinks),
+      isLoading: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +40,9 @@ class App extends Component {
     this.setState({
       shortenedLinks,
       url: '',
+      isLoading: false,
     });
+    NProgress.done();
   }
 
   shortenUrl(event) {
@@ -45,6 +50,8 @@ class App extends Component {
     const urlApi = '/proxy/shorten';
     const url = this.state.url;
 
+    NProgress.start();
+    this.setState({ isLoading: true });
     axios.post(urlApi, { url })
       .then(this.addLink)
       .catch((error) => {
@@ -95,7 +102,11 @@ class App extends Component {
               placeholder="Paste the link you want to shorten here"
               value={this.state.url} onChange={this.handleChange}
             />
-            <button className="col-2-8" disabled={!this.state.url} type="submit">
+            <button
+              className="col-2-8"
+              disabled={this.state.isLoading || !this.state.url}
+              type="submit"
+            >
               Shorten this link
             </button>
           </form>

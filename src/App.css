@@ -92,3 +92,16 @@ body {
   font-size: 14px;
   color: #AAA;
 }
+
+#nprogress .bar {
+  background: #EB4A42;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #EB4A42, 0 0 5px #EB4A42;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #EB4A42;
+  border-left-color: #EB4A42;
+}
