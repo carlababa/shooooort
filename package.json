@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start",
     "watch": "webpack -d --watch",
-    "build": "webpack",
+    "heroku": "webpack; node index.js",
     "start": "node index.js",
     "lint": "eslint src; exit 0",
     "lint:fix": "eslint src --fix; exit 0"
@@ -22,21 +22,14 @@
   },
   "homepage": "https://github.com/carlababa/shooooort#readme",
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^6.2.10",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-es2015": "^6.13.2",
-    "babel-preset-react": "^6.11.1",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
-    "css-loader": "^0.26.1",
     "enzyme": "^2.7.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
-    "json-loader": "^0.5.4",
     "karma": "^1.4.0",
     "karma-mocha": "^1.3.0",
     "karma-phantomjs-launcher": "^1.0.2",
@@ -46,16 +39,23 @@
     "moxios": "^0.3.0",
     "phantomjs-prebuilt": "^2.1.14",
     "react-addons-test-utils": "^15.4.2",
-    "sinon": "^1.17.7",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.13.1"
+    "sinon": "^1.17.7"
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.26.1",
     "express": "^4.14.0",
+    "json-loader": "^0.5.4",
     "http-proxy": "^1.16.2",
     "moment": "^2.17.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
   }
 }

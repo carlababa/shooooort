@@ -27,11 +27,11 @@ class App extends Component {
 
   addLink(response) {
     const shortenedLinks = [
-      ...this.state.shortenedLinks,
       {
         longUrl: this.state.url,
         shortcode: response.data.shortcode,
       },
+      ...this.state.shortenedLinks,
     ];
     localStorage.setItem('shortenedLinks', JSON.stringify(shortenedLinks));
     this.setState({

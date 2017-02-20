@@ -27,7 +27,7 @@ class Url extends Component {
   }
 
   render() {
-    const longUrl = cutText(this.state.link.longUrl, 50);
+    const longUrl = cutText(this.state.link.longUrl, 42);
     const fullLink = `http://gymia-shorty.herokuapp.com/${this.state.link.shortcode}`;
     return (
       <div className="grid row">
