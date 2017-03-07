@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import axios from 'axios';
 import NProgress from 'nprogress';
+import { connect } from 'react-redux';
+import { updateUrl } from './actions';
 import Url from './Url';
 
 require('nprogress/nprogress.css');
@@ -25,13 +27,13 @@ class App extends Component {
   }
 
   handleChange(event) {
-    this.setState({ url: event.target.value });
+    this.props.dispatch(updateUrl(event.target.value));
   }
 
   addLink(response) {
     const shortenedLinks = [
       {
-        longUrl: this.state.url,
+        longUrl: this.props.url,
         shortcode: response.data.shortcode,
       },
       ...this.state.shortenedLinks,
@@ -48,7 +50,7 @@ class App extends Component {
   shortenUrl(event) {
     event.preventDefault();
     const urlApi = '/proxy/shorten';
-    const url = this.state.url;
+    const url = this.props.url;
 
     NProgress.start();
     this.setState({ isLoading: true });
@@ -100,11 +102,11 @@ class App extends Component {
               className="col-6-8"
               type="text"
               placeholder="Paste the link you want to shorten here"
-              value={this.state.url} onChange={this.handleChange}
+              value={this.props.url} onChange={this.handleChange}
             />
             <button
               className="col-2-8"
-              disabled={this.state.isLoading || !this.state.url}
+              disabled={this.state.isLoading || !this.props.url}
               type="submit"
             >
               Shorten this link
@@ -117,4 +119,15 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  url: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => (
+  {
+    url: state.url,
+  }
+);
+
+export default connect(mapStateToProps)(App);
