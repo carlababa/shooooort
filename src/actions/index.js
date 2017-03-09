@@ -32,13 +32,32 @@ export function clearStorage() {
   };
 }
 
+export function getUrlStatsSuccess(response, shortcode) {
+  return {
+    type: 'ADD_STATS_TO_LINK',
+    data: response.data,
+    shortcode,
+  };
+}
+
+export function getUrlStats(shortcode) {
+  const urlApi = `/proxy/${shortcode}/stats`;
+  return (dispatch) => {
+    axios.get(urlApi)
+      .then(response => dispatch(getUrlStatsSuccess(response, shortcode)))
+      .catch((error) => {
+        window.alert(error); // eslint-disable-line no-alert
+      });
+  };
+}
+
 export function shortenUrlRequest(url) {
   return (dispatch) => {
     dispatch(toggleIsLoading());
     axios.post('/proxy/shorten', { url })
       .then(response => dispatch(shortenUrlRequestSuccess(response)))
-      .then(dispatch(toggleIsLoading()))
-      .then(dispatch(resetUrlInput()))
+      .then(() => dispatch(toggleIsLoading()))
+      .then(() => dispatch(resetUrlInput()))
       .catch((error) => {
         window.alert(error); // eslint-disable-line no-alert
       });

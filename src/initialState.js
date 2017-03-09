@@ -14,6 +14,6 @@ export default function initialState() {
   return {
     url: '',
     isLoading: false,
-    shortenedLinks: loadShortenedLinks() || [],
+    shortenedLinks: loadShortenedLinks() || {},
   };
 }

@@ -53,8 +53,8 @@ class App extends Component {
             <div className="col-5-8">LAST VISITED</div>
           </div>
         </div>
-        {this.props.shortenedLinks.map(item => (
-          <Url key={item.shortcode} link={item} />
+        {Object.keys(this.props.shortenedLinks).map(item => (
+          <Url key={item} {...this.props} {...this.props.shortenedLinks[item]} />
         ))}
       </div>
     );
@@ -84,7 +84,7 @@ class App extends Component {
             </button>
           </form>
         </div>
-        {this.props.shortenedLinks.length ? this.renderList() : <div />}
+        {Object.keys(this.props.shortenedLinks).length ? this.renderList() : <div />}
       </div>
     );
   }
@@ -94,7 +94,7 @@ App.propTypes = {
   url: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  shortenedLinks: PropTypes.arrayOf(PropTypes.shape({
+  shortenedLinks: PropTypes.objectOf(PropTypes.shape({
     longUrl: PropTypes.string.isRequired,
     shortcode: PropTypes.string.isRequired,
   }).isRequired).isRequired,

@@ -10,13 +10,21 @@ const shortApp = (state, action) => {
       });
     case 'ADD_SHORTENED_LINK':
       return Object.assign({}, state, {
-        shortenedLinks: [
-          {
+        shortenedLinks: Object.assign({}, state.shortenedLinks, {
+          [action.shortcode]: {
             longUrl: state.url,
             shortcode: action.shortcode,
           },
-          ...state.shortenedLinks,
-        ],
+        }),
+      });
+    case 'ADD_STATS_TO_LINK':
+      return Object.assign({}, state, {
+        shortenedLinks: Object.assign({}, state.shortenedLinks, {
+          [action.shortcode]: Object.assign({}, state.shortenedLinks[action.shortcode], {
+            redirectCount: action.data.redirectCount,
+            lastSeenDate: action.data.lastSeenDate,
+          }),
+        }),
       });
     case 'RESET_URL_INPUT':
       return Object.assign({}, state, {
